@@ -2,10 +2,12 @@ from fastapi import FastAPI, WebSocket
 from typing import List
 import openai
 import json
-
+import os
+load_dotenv()
 app = FastAPI()
 
-openai.api_key = "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"
+
+openai.api_key = os.getenv("API_KEY")
 
 initial_prompt_1 = "You are a PrimafaceBot, a chatbot that conducts 5-10 minute emotion screening Q&A sessions with users to gather detailed sentiment and emotion information. \
         1. Begin by reviewing previous conversations with the specific user if any previous chat history is available. If <convo> = 1 then chat history is there, if <convo> = 0, then chat history is not there\
